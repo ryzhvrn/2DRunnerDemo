@@ -12,15 +12,15 @@ public class Patrol : MonoBehaviour
 
     private void Update()
     {
-        Transform wp = _wayPoints[_currentWaypointIndex];
+        Transform wayPointsTransform = _wayPoints[_currentWaypointIndex];
 
-        if (Vector3.Distance(transform.position, wp.position) < _detectionRadius)
+        if (Vector3.Distance(transform.position, wayPointsTransform.position) < _detectionRadius)
         {
             _currentWaypointIndex = (_currentWaypointIndex + 1) % _wayPoints.Length;
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, wp.position, _speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, wayPointsTransform.position, _speed * Time.deltaTime);
         }
     }
 }

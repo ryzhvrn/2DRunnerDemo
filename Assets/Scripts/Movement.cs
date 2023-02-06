@@ -14,6 +14,8 @@ public class Movement : MonoBehaviour
     private float _groundRadius = 0.2f;
     private bool _isFacingRight = true;
     private Animator _animator;
+    private const string Speed = "Speed";
+    private const string IsJumped = "isJumped";
 
     private void Start()
     {
@@ -39,7 +41,7 @@ public class Movement : MonoBehaviour
     private void Move()
     {
         float move = Input.GetAxis("Horizontal");
-        _animator.SetFloat("Speed", Mathf.Abs(move));
+        _animator.SetFloat(Speed, Mathf.Abs(move));
         _playerRigidbody.velocity = new Vector2(move * _speed, _playerRigidbody.velocity.y);
 
         if (move > 0 && !_isFacingRight)
@@ -53,20 +55,21 @@ public class Movement : MonoBehaviour
 
         if (_isGrounded && Input.GetKeyDown(KeyCode.W))
         {
-            _animator.SetBool("isJumped", true);
+            _animator.SetBool(IsJumped, true);
             _playerRigidbody.AddForce(new Vector2(0, _jumpForce));
         }
         else
         {
-            _animator.SetBool("isJumped", false);
+            _animator.SetBool(IsJumped, false);
         }
     }
 
     private void Flip()
     {
+        int reflectionMultiplier = -1;
         _isFacingRight = !_isFacingRight;
         Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
+        theScale.x *= reflectionMultiplier;
         transform.localScale = theScale;
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CollectCoin : MonoBehaviour
+public class CoinPickup : MonoBehaviour
 {
     [SerializeField] private Text _text;
 
