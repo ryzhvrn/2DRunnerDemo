@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    private const string Speed = "Speed";
+    private const string IsJumped = "isJumped";
+
     [SerializeField] private float _speed = 4;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask whatIsGround;
@@ -14,8 +17,6 @@ public class Movement : MonoBehaviour
     private float _groundRadius = 0.2f;
     private bool _isFacingRight = true;
     private Animator _animator;
-    private const string Speed = "Speed";
-    private const string IsJumped = "isJumped";
 
     private void Start()
     {
